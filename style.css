@@ -1,0 +1,66 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 700px;
+    display: flex;
+    flex-flow: column;
+    background-color: rgba(245, 245, 245, 0.8);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 9px;
+}
+
+.form_input {
+    margin: auto;
+}
+
+.form_input>form>input {
+    width: 500px;
+}
+
+.input_body {
+    line-height: 50px;
+}
+
+.attention_text {
+    color: red;
+    margin: auto;
+}
+
+.attention_text>.alert_text {
+    margin: 20px 0 0 0;
+}
+
+.data_messages {
+    margin-left: 20px;
+}
+
+p#title_text {
+    font-weight: bolder;
+}
+
+.confirmation {
+    padding-top: 20px;
+}
+
+.confirmation_option {
+    margin: 0 auto;
+    display: block;
+}
+
+.confirmation_warning_area {
+    padding-bottom: 20px;
+}
+
+.paging-button {
+    display: flex;
+    flex-flow: column;
+    margin: 20px 0;
+}
+
+.pagination {
+    margin: auto;
+}
