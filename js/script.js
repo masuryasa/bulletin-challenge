@@ -46,7 +46,7 @@ function disEnaPaginationItem() {
     if (page_total > 5) {
         const neighbor_page_num = []
         
-        for (let i=1; i<=page_total; i++) {
+        for (let i = 1; i <= page_total; i++) {
             
             if ((current_page_num-2 > i) || (current_page_num+2 < i)) {
                 neighbor_page_num.push(i);
