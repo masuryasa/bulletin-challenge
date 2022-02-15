@@ -1,9 +1,9 @@
 <?php
 require_once "../Database.php";
-require_once "../models/Bulletin.php";
+require_once "../models/ModelBulletin.php";
 
 $database = new Database();
-$bulletin = new Bulletin($database);
+$bulletin = new ModelBulletin($database);
 
 $currentPage = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], "/") + 1);
 $currentPageNum = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], "=") + 1);
@@ -27,9 +27,8 @@ $arrResults = $bulletin->selectMessageByLimit($start, $page);
 <head>
     <title>Bulletin Challenge</title>
 
-    <link rel="stylesheet" href="../bootstrap-4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/script.js"></script>
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
 </head>
 
 <body onload="disEnaPaginationItem()">
@@ -94,6 +93,7 @@ $arrResults = $bulletin->selectMessageByLimit($start, $page);
             </li>
         </ul>
     </div>
+    <script src="<?= BASEURL; ?>/js/script.js"></script>
 </body>
 
 </html>

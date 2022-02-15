@@ -1,7 +1,7 @@
 <?php
 require_once "../Database.php";
 
-class Bulletin
+class ModelBulletin
 {
     public $database;
 

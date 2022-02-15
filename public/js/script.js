@@ -38,6 +38,7 @@ function disEnaPaginationItem() {
     
     if (current_page_num === 1 || full_url == "http://localhost/bulletin/index.php") {
         prevItem.style.display = 'none';
+        // prevItem.setAttribute("href","javascript:void(0)");
     }
     else if (current_page_num === page_total) {
         nextItem.style.display = 'none';

@@ -16,9 +16,8 @@ $result = $database->selectMessagesData($idMessage);
 <head>
 	<title>Bulletin Challenge</title>
 
-	<link rel="stylesheet" href="../bootstrap-4.1.3/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/style.css">
-	<script src="../js/script.js"></script>
+	<link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
+	<link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
 </head>
 
 <body>
@@ -75,6 +74,7 @@ $result = $database->selectMessagesData($idMessage);
 		?>
 
 	</div>
+	<script src="<?= BASEURL; ?>/js/script.js"></script>
 </body>
 
 </html>

@@ -1,9 +1,9 @@
 <?php
 require_once "../Database.php";
-require_once "../models/Bulletin.php";
+require_once "../models/ModelBulletin.php";
 
 $database = new Database();
-$bulletin = new Bulletin($database);
+$bulletin = new ModelBulletin($database);
 
 $idMessage = $_REQUEST["id_message"];
 $previous = $_REQUEST["current_page"];
