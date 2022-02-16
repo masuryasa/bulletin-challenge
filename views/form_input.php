@@ -3,7 +3,7 @@
     <p id="warningBody"></p>
     <?php
     $action = "../controllers/";
-    $value = "";
+    $valueTitle = $valueBody = "";
     if ($indexPage) :
         $action .= "insert_process";
     ?>
@@ -11,17 +11,18 @@
     <?php
     else :
         $action .= "edit_process";
-        $value = "value=" . $result['body'];
+        $valueTitle = "value=" . $result['title'];
+        $valueBody = "value=" . $result['body'];
     endif
     ?>
 </div>
 <div class="form_input">
     <form name="messageForm" action="<?= $action; ?>.php" method="POST" class="confirmation_warning_area">
         <label for="title">Title</label><br>
-        <input type="text" id="title" name="title" minlength="10" maxlength="32" required <?= $value; ?>>
+        <input type="text" id="title" name="title" minlength="10" maxlength="32" required <?= $valueTitle; ?>>
         <br>
         <label for="body">Body</label><br>
-        <input type="text" id="body" name="body" minlength="10" maxlength="200" class="input_body" required <?= $value; ?>>
+        <input type="text" id="body" name="body" minlength="10" maxlength="200" class="input_body" required <?= $valueBody; ?>>
         <br>
         <?php if ($indexPage) : ?>
             <label for="pass">Password</label><br>
