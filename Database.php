@@ -3,11 +3,19 @@ include_once "config/config.php";
 
 class Database
 {
-    public $mysqli;
+    protected $mysqli;
+    protected $tableName;
 
-    function __construct()
+    function __construct($tableName)
+    {
+        $this->connectDatabase();
+        $this->tableName = $tableName;
+    }
+
+    private function connectDatabase()
     {
         $mysqli = new mysqli(HOST, USERNAME, PASSWORD, DATABASE_NAME);
+
         if ($mysqli) {
             return $this->mysqli = $mysqli;
         } elseif ($mysqli->connect_errno) {
@@ -16,73 +24,64 @@ class Database
     }
 
     // method to insert message with password
-    public function insertMessageData($title, $body, $password)
+    public function insert($title, $body, $password)
     {
         $mysqli = $this->mysqli;
+        $sql = "INSERT INTO " . $this->tableName;
 
-        if ($password != "") {
-            $sql = "INSERT INTO messages " .
-                "VALUES ('', '$title', '$body', md5('$password'), now())";
-        } else {
-            $sql = "INSERT INTO messages " .
-                "VALUES ('', '$title', '$body', '', now())";
+        if (!empty($password)) {
+            $password = md5('$password');
         }
+
+        $sql .= " VALUES ('', '$title', '$body', '$password', now())";
 
         return $mysqli->query($sql);
     }
 
     // method to select all messages data from database
-    public function selectMessagesData($idMessage)
+    public function select($idMessage, $start, $page)
     {
         $mysqli = $this->mysqli;
+        $sql = "SELECT * FROM " . $this->tableName;
 
-        if ($idMessage != -1) {
-            // select specified message data if $idMessage is not set by -1
-            $sql = "SELECT * FROM messages " .
-                "WHERE id_message=$idMessage";
+        if (!is_null($idMessage)) {
+            $sql .= " WHERE id_message=$idMessage";
             $result = $mysqli->query($sql);
             return $result->fetch_assoc();
+        } elseif (!is_null($start) && !is_null($page)) {
+            $sql .= " ORDER BY id_message " .
+                "DESC LIMIT $start, $page";
+            $results = $mysqli->query($sql);
+
+            while ($data = $results->fetch_array()) {
+                $arrResults[] = $data;
+            }
+            return $arrResults;
         } else {
-            // select all message data if $idMessage is set by -1
-            $sql = "SELECT * FROM messages";
             return $mysqli->query($sql);
         }
     }
 
-    // method to select message data with limit it
-    public function selectMessageDataByLimit($start, $page)
-    {
-        $mysqli = $this->mysqli;
-
-        $sql = "SELECT * FROM messages " .
-            "ORDER BY id_message " .
-            "DESC LIMIT $start, $page";
-        $results = $mysqli->query($sql);
-
-        while ($data = $results->fetch_array()) {
-            $arrResults[] = $data;
-        }
-        return $arrResults;
-    }
-
     // method to update specific message data
-    public function updateMessageData($idMessage, $title, $body)
+    public function update($idMessage, $title, $body)
     {
         $mysqli = $this->mysqli;
 
-        $sql = "UPDATE messages " .
-            "SET title='$title', body='$body' " .
+        $sql = "UPDATE " .
+            $this->tableName .
+            " SET title='$title', body='$body' " .
             "WHERE id_message=$idMessage";
         return $mysqli->query($sql);
     }
 
     // method delete message data
-    public function deleteMessageData($idMessage)
+    public function delete($idMessage)
     {
         $mysqli = $this->mysqli;
 
-        $sql = "DELETE FROM messages " .
-            "WHERE id_message=$idMessage";
+        $sql = "DELETE FROM " .
+            $this->tableName .
+            " WHERE id_message=$idMessage";
         return $mysqli->query($sql);
     }
 }

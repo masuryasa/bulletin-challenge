@@ -1,13 +1,14 @@
 <?php
-require_once "../Database.php";
+require_once "../models/Bulletin.php";
 
-$database = new Database();
+$bulletin = new Bulletin();
 
 $password = $_REQUEST["passwd"];
 $idMessage = $_REQUEST["id_message"];
-$previous = $_REQUEST["current_page"];
+$previous = "../public/" . $_REQUEST["current_page"];
 
-$result = $database->selectMessagesData($idMessage);
+$result = $bulletin->selectMessage($idMessage);
+$edit = false;
 ?>
 
 <!DOCTYPE html>
@@ -25,21 +26,10 @@ $result = $database->selectMessagesData($idMessage);
 
 		<?php
 		if (!$result['pass']) :
+			require_once "../views/no_password.php";
 		?>
-			<div class="attention_text">
-				<p class="alert_text">This message can’t delete, because this message has not been set password.</p>
-			</div>
-			<p id="title_text"><?= $result['title'] ?></p>
-			<p><?= $result['body'] ?></p>
-			<p><?= $result['time'] ?></p>
-			<div class="confirmation_option">
-				<form method="POST" class="confirmation_warning_area">
-					<button type="submit" formaction="../public/<?= $previous ?>">Back previous page</button>
-				</form>
-			</div>
-		<?php
-		elseif (md5($password) === $result['pass']) :
-		?>
+
+		<?php elseif (md5($password) === $result['pass']) : ?>
 			<form method="POST" class="confirmation_warning_area">
 				<div class="confirmation">
 					<p id="title_text"><?= $result['title'] ?></p>
@@ -49,29 +39,16 @@ $result = $database->selectMessagesData($idMessage);
 				</div>
 				<div class="confirmation_option">
 					<p>Are you sure?</p>
+					<input type="hidden" name="current_page" value="<?= $previous ?>">
 					<button type="submit" name="id_message" formaction="delete_process.php" value="<?= $result["id_message"] ?>">Yes</button>
-					<input type="hidden" name="current_page" value="../public/<?= $previous ?>">
-					<button type="submit" formaction="../public/<?= $previous ?>">Cancel</button>
+					<button>
+						<a href="<?= $previous ?>">Cancel</a>
+					</button>
 				</div>
 			</form>
-		<?php
-		elseif (md5($password) != $result['pass']) :
-		?>
-			<div class="attention_text">
-				<p class="alert_text">The passwords you entered do not match. Please try again.</p>
-			</div>
-			<form method="POST" class="confirmation_warning_area">
-				<p id="title_text"><?= $result['title'] ?></p>
-				<p><?= $result['body'] ?></p>
-				<p><?= $result['time'] ?></p>
-				<label for="passwd">Pass</label>
-				<input type="password" id="passwd" name="passwd" size="5" maxlength="4" required />
-				<input type="hidden" name="current_page" value="../public/<?= $previous ?>" />
-				<button type="submit" name="id_message" formaction="delete_form.php" value="<?= $result["id_message"] ?>">Delete</button>
-			</form>
-		<?php
-		endif;
-		?>
+		<?php else :
+			require_once "../views/false_password.php";
+		endif ?>
 
 	</div>
 	<script src="<?= BASEURL; ?>/js/script.js"></script>

@@ -1,14 +1,8 @@
 <?php
-require_once "../Database.php";
-require_once "../models/ModelBulletin.php";
+require_once "../models/Bulletin.php";
 
-$database = new Database();
-$bulletin = new ModelBulletin($database);
+$bulletin = new Bulletin();
 
-$idMessage = $_REQUEST["id_message"];
-$previous = $_REQUEST["current_page"];
-
-if ($bulletin->deleteMessage($idMessage)) {
-	header("Location:" . $previous);
-	die();
+if ($bulletin->deleteMessage($_REQUEST["id_message"])) {
+	header("Location:" . $_REQUEST["current_page"]);
 }

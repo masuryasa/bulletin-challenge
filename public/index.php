@@ -1,9 +1,7 @@
 <?php
-require_once "../Database.php";
-require_once "../models/ModelBulletin.php";
+require_once "../models/Bulletin.php";
 
-$database = new Database();
-$bulletin = new ModelBulletin($database);
+$bulletin = new Bulletin();
 
 $currentPage = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], "/") + 1);
 $currentPageNum = substr($_SERVER['REQUEST_URI'], strrpos($_SERVER['REQUEST_URI'], "=") + 1);
@@ -18,7 +16,9 @@ $start = ($urlPage > 1) ? ($urlPage * $page) - $page : 0;
 $selectAllMessages = $bulletin->selectMessage();
 $total = $selectAllMessages->num_rows;
 $numPages = ceil($total / $page);
-$arrResults = $bulletin->selectMessageByLimit($start, $page);
+$arrResults = $bulletin->selectMessage(null, $start, $page);
+
+$indexPage = true;
 ?>
 
 <!DOCTYPE html>
@@ -33,28 +33,9 @@ $arrResults = $bulletin->selectMessageByLimit($start, $page);
 
 <body onload="disEnaPaginationItem()">
     <div class="container">
-        <div class="attention_text">
-            <p id="warningTitle" style="margin-top: 20px;"></p>
-            <p id="warningBody"></p>
-            <p id="warningPassword"></p>
-        </div>
-        <div class="form_input">
-            <form name="messageForm" action="../controllers/insert_process.php" method="POST">
-                <label for="title">Title</label><br>
-                <input type="text" id="title" name="title" minlength="10" maxlength="32" required>
-                <br>
-                <label for="body">Body</label><br>
-                <input type="text" id="body" name="body" minlength="10" maxlength="200" class="input_body" required>
-                <br>
-                <label for="pass">Password</label><br>
-                <input type="password" id="pass" name="pass" minlength="4" maxlength="4">
-                <br>
-                <br>
-                <input type="submit" onclick="validatorForm()">
-            </form>
-        </div>
 
-        <?php foreach ($arrResults as $result) : ?>
+        <?php require_once "../views/form_input.php";
+        foreach ($arrResults as $result) : ?>
             <hr style="margin:30px 0;">
             <div class="data_messages">
                 <p id="title_text"><?= $result['title'] ?></p>
