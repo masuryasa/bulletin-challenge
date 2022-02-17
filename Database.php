@@ -30,7 +30,7 @@ class Database
         $sql = "INSERT INTO " . $this->tableName;
 
         if (!empty($password)) {
-            $password = md5('$password');
+            $password = md5($password);
         }
 
         $sql .= " VALUES ('', '$title', '$body', '$password', now())";

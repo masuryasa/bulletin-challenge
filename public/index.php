@@ -21,15 +21,7 @@ $arrResults = $bulletin->selectMessage(null, $start, $page);
 $indexPage = true;
 ?>
 
-<!DOCTYPE html>
-<html>
-
-<head>
-    <title>Bulletin Challenge</title>
-
-    <link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
-    <link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
-</head>
+<?php require_once "../views/templates/header.php"  ?>
 
 <body onload="disEnaPaginationItem()">
     <div class="container">
@@ -74,7 +66,5 @@ $indexPage = true;
             </li>
         </ul>
     </div>
-    <script src="<?= BASEURL; ?>/js/script.js"></script>
-</body>
 
-</html>
+    <?php require_once "../views/templates/footer.php"  ?>

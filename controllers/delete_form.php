@@ -8,18 +8,11 @@ $idMessage = $_REQUEST["id_message"];
 $previous = "../public/" . $_REQUEST["current_page"];
 
 $result = $bulletin->selectMessage($idMessage);
+
 $edit = false;
 ?>
 
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>Bulletin Challenge</title>
-
-	<link rel="stylesheet" href="<?= BASEURL; ?>/css/bootstrap.min.css">
-	<link rel="stylesheet" href="<?= BASEURL; ?>/css/style.css">
-</head>
+<?php require_once "../views/templates/header.php"  ?>
 
 <body>
 	<div class="container">
@@ -34,7 +27,5 @@ $edit = false;
 		endif ?>
 
 	</div>
-	<script src="<?= BASEURL; ?>/js/script.js"></script>
-</body>
 
-</html>
+	<?php require_once "../views/templates/footer.php"  ?>

@@ -3,26 +3,18 @@
     <p id="warningBody"></p>
     <?php
     $action = "../controllers/";
-    $valueTitle = $valueBody = "";
     if ($indexPage) :
-        $action .= "insert_process";
     ?>
         <p id="warningPassword"></p>
-    <?php
-    else :
-        $action .= "edit_process";
-        $valueTitle = "value=" . $result['title'];
-        $valueBody = "value=" . $result['body'];
-    endif
-    ?>
+    <?php endif ?>
 </div>
 <div class="form_input">
-    <form name="messageForm" action="<?= $action; ?>.php" method="POST" class="confirmation_warning_area">
+    <form name="messageForm" action="<?= $action .= $indexPage ? "insert" : "edit"; ?>_process.php" method="POST" class="confirmation_warning_area">
         <label for="title">Title</label><br>
-        <input type="text" id="title" name="title" minlength="10" maxlength="32" required <?= $valueTitle; ?>>
+        <input type="text" id="title" name="title" minlength="10" maxlength="32" required value="<?= $value = !$indexPage ? $result['title'] : ''; ?>">
         <br>
         <label for="body">Body</label><br>
-        <input type="text" id="body" name="body" minlength="10" maxlength="200" class="input_body" required <?= $valueBody; ?>>
+        <input type="text" id="body" name="body" minlength="10" maxlength="200" class="input_body" required value="<?= $value = !$indexPage ? $result['body'] : ''; ?>">
         <br>
         <?php if ($indexPage) : ?>
             <label for="pass">Password</label><br>
@@ -36,7 +28,6 @@
             <br>
             <br>
             <input type="submit" onclick="validatorForm()" style="height:50px auto; width:100px">
-            <!-- <input type="submit" style="height:50px auto; width:100px" onclick="validatorForm()"> -->
             <button>
                 <a href="<?= $previous ?>">Cancel</a>
             </button>
