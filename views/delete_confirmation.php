@@ -7,10 +7,10 @@
     </div>
     <div class="confirmation_option">
         <p>Are you sure?</p>
-        <input type="hidden" name="current_page" value="<?= $previous ?>">
-        <button type="submit" name="id_message" formaction="delete_process.php" value="<?= $result["id_message"] ?>">Yes</button>
+        <input type="hidden" name="currentPage" value="<?= $previous ?>">
+        <button type="submit" name="idMessage" formaction="delete_process.php" value="<?= $result["id_message"] ?>">Yes</button>
         <button>
-            <a href="<?= $previous ?>">Cancel</a>
+            <a href="<?= BASEURL . $previous ?>">Cancel</a>
         </button>
     </div>
 </form>

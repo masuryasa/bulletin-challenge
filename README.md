@@ -1,6 +1,7 @@
-## REVISI
+# REVISI - TIMEDOOR CHALLENGE PROGRAM
 
-### Revisi I
+## Revisi I
+
 - File index.php ke folder public :heavy_check_mark:
 - Konfigurasi host, username, password, database_name  dalam Database.php masukkan/simpan dalam folder config dalam file config.php :heavy_check_mark:
 - Method `insertWithPassword()` dan `insertWithoutPassword()` jadikan satu, dengan memberi pengkondisian :heavy_check_mark:
@@ -15,7 +16,8 @@
 - File edit/delete form dan edit/delete proses dimasukkan dalam folder controllers :heavy_check_mark:
 - Jarak operator dengan operand diberikan spasi :heavy_check_mark:
 
-### Revisi II
+## Revisi II
+
 - Instance database pada view dihilangkan :heavy_check_mark:
 - `elseif` pada kondisi password false, dijadikan else :heavy_check_mark:
 - Tag `<?php ?>` dengan element HTML dijadikan satu baris :heavy_check_mark:
@@ -27,3 +29,14 @@
 - Database class untuk select jadikan satu, tentukan query yang di-execute dengan pengkondisian :heavy_check_mark:
 - Buatkan private method untuk koneksi database di class Database, dan `__construct()` dijadikan untuk definisi nama table :heavy_check_mark:
 - Tambahkan validasi php pada insert/edit/delete :heavy_check_mark:
+
+## Revisi III
+
+- Ubah absolute path :heavy_check_mark:
+- Kode dalam tag php diberikan indent
+- Rapikan penulisan assignment dengan mensejajarkan tanda '=' :heavy_check_mark:
+- Pagination diubah dengan PHP, dan jangan selectAll sekalian
+- Property name pada tag HTML sama dengan penamaan pada variable, camelCase :heavy_check_mark:
+- Tag php pada HTML biarkan per baris, meski digunakan oleh 2 baris kode php :heavy_check_mark:
+- Pindahkan kondisional pada edit_form.php dan delete_form.php ke baris atas, hanya require form saja yang dimasukkan dalam tag HTML :heavy_check_mark:
+- `;` pada penutup kondisional dihapus :heavy_check_mark:

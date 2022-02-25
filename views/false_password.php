@@ -8,6 +8,6 @@
     <p><?= $result['time'] ?></p>
     <label for="passwd">Pass</label>
     <input type="password" id="passwd" size="5" name="passwd" maxlength="4" required />
-    <input type="hidden" name="current_page" value="<?= $previous ?>">
-    <button type="submit" name="id_message" formaction="<?= $edit; ?>_form.php" value="<?= $result["id_message"] ?>"><?= $edit; ?></button>
+    <input type="hidden" name="currentPage" value="<?= $previous ?>">
+    <button type="submit" name="idMessage" formaction="<?= $edit ?>_form.php" value="<?= $result["id_message"] ?>"><?= $edit ?></button>
 </form>

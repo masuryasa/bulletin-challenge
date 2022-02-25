@@ -1,33 +1,37 @@
 <?php
-require_once "../models/Bulletin.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/bulletin/config/config.php";
+require_once MODELPATH . "Bulletin.php";
 
 $bulletin = new Bulletin();
 
-$password = $_REQUEST["passwd"];
-$idMessage = $_REQUEST["id_message"];
-$previous = "../public/" . $_REQUEST["current_page"];
+$password  = $_REQUEST['passwd'];
+$idMessage = $_REQUEST['idMessage'];
+$previous  = $_REQUEST['currentPage'];
 
 $result = $bulletin->selectMessage($idMessage);
 
 $edit = true;
+
 $indexPage = false;
+
+if (!$result['pass']) :
+	$requireForm = "no_password";
+elseif (md5($password) === $result['pass']) :
+	$requireForm = "form_input";
+else :
+	$requireForm = "false_password";
+endif;
 ?>
 
-<?php require_once "../views/templates/header.php"  ?>
+<?php require_once VIEWPATH . "templates/header.php"  ?>
 
 <body>
 	<div class="container">
 
 		<?php
-		if (!$result['pass']) :
-			require_once "../views/no_password.php";
-		elseif (md5($password) === $result['pass']) :
-			require_once "../views/form_input.php";
-		else :
-			require_once "../views/false_password.php";
-		endif
+		require_once VIEWPATH . "$requireForm.php";
 		?>
 
 	</div>
 
-	<?php require_once "../views/templates/footer.php"  ?>
+	<?php require_once VIEWPATH . "templates/footer.php"  ?>
