@@ -13,9 +13,9 @@ class Bulletin extends General
         return $this->insert($title, $body, $password);
     }
 
-    public function selectMessage($idMessage = null, $start = null, $page = null)
+    public function selectMessage($idMessage = null, $countTotal = null, $start = null, $limit = null)
     {
-        return $this->select($idMessage, $start, $page);
+        return $this->select($idMessage, $countTotal, $start, $limit);
     }
 
     public function updateMessage($idMessage, $title, $body)

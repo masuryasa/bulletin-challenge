@@ -33,9 +33,9 @@
 ## Revisi III
 
 - Ubah absolute path :heavy_check_mark:
-- Kode dalam tag php diberikan indent
+- Kode dalam tag php diberikan indent :heavy_check_mark:
 - Rapikan penulisan assignment dengan mensejajarkan tanda '=' :heavy_check_mark:
-- Pagination diubah dengan PHP, dan jangan selectAll sekalian
+- Pagination diubah dengan PHP, dan jangan selectAll sekalian :heavy_check_mark:
 - Property name pada tag HTML sama dengan penamaan pada variable, camelCase :heavy_check_mark:
 - Tag php pada HTML biarkan per baris, meski digunakan oleh 2 baris kode php :heavy_check_mark:
 - Pindahkan kondisional pada edit_form.php dan delete_form.php ke baris atas, hanya require form saja yang dimasukkan dalam tag HTML :heavy_check_mark:

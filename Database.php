@@ -39,18 +39,21 @@ class Database
     }
 
     // method to select all messages data from database
-    public function select($idMessage, $start, $page)
+    public function select($idMessage, $countTotal, $start, $limit)
     {
         $mysqli = $this->mysqli;
-        $sql = "SELECT * FROM " . $this->tableName;
+        $sql = $countTotal ? "SELECT count(*) as total FROM " . $this->tableName : "SELECT * FROM " . $this->tableName;
 
         if (!is_null($idMessage)) {
             $sql .= " WHERE id_message=$idMessage";
             $result = $mysqli->query($sql);
             return $result->fetch_assoc();
-        } elseif (!is_null($start) && !is_null($page)) {
+        } elseif ($countTotal) {
+            $result = $mysqli->query($sql);
+            return $result->fetch_assoc();
+        } elseif (!is_null($start) && !is_null($limit)) {
             $sql .= " ORDER BY id_message " .
-                "DESC LIMIT $start, $page";
+                "DESC LIMIT $start, $limit";
             $results = $mysqli->query($sql);
 
             while ($data = $results->fetch_array()) {

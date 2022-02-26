@@ -15,9 +15,9 @@ class General
         return $this->database->insert($title, $body, $password);
     }
 
-    protected function select($idMessage, $start, $page)
+    protected function select($idMessage, $countTotal, $start, $limit)
     {
-        return $this->database->select($idMessage, $start, $page);
+        return $this->database->select($idMessage, $countTotal, $start, $limit);
     }
 
     protected function update($idMessage, $title, $body)
