@@ -7,7 +7,7 @@
 <div class="confirmation_option">
     <div class="confirmation_warning_area">
         <button>
-            <a href="<?= BASEURL . $previous ?>">Back previous page</a>
+            <a href="<?= $previous ?>">Back previous page</a>
         </button>
     </div>
 </div>

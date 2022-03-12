@@ -8,9 +8,9 @@
     <div class="confirmation_option">
         <p>Are you sure?</p>
         <input type="hidden" name="currentPage" value="<?= $previous ?>">
-        <button type="submit" name="idMessage" formaction="delete_process.php" value="<?= $result["id_message"] ?>">Yes</button>
+        <button type="submit" name="idMessage" formaction="/?controllers=delete_process" value="<?= $result["id_message"] ?>">Yes</button>
         <button>
-            <a href="<?= BASEURL . $previous ?>">Cancel</a>
+            <a href="<?= $previous ?>">Cancel</a>
         </button>
     </div>
 </form>

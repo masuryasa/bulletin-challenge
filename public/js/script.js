@@ -15,7 +15,7 @@ function validatorForm() {
         warning_body = "Your message must be 10 to 200 characters long";
     }
 
-    if ((pass_val != "") && (pass_val.length != 4)){
+    if ((pass_val != "") && !(/\d{4}/.test(pass_val))){
         warning_password = "Your password must be 4 digit number";
     }
 

@@ -33,7 +33,9 @@ class Database
             $password = md5($password);
         }
 
-        $sql .= " VALUES ('', '$title', '$body', '$password', now())";
+        $sql .= " VALUES ('0', '$title', '$body', '$password', now())";
+
+        var_dump($sql);
 
         return $mysqli->query($sql);
     }

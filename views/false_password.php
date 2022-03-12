@@ -9,5 +9,5 @@
     <label for="passwd">Pass</label>
     <input type="password" id="passwd" size="5" name="passwd" maxlength="4" required />
     <input type="hidden" name="currentPage" value="<?= $previous ?>">
-    <button type="submit" name="idMessage" formaction="<?= $edit ?>_form.php" value="<?= $result["id_message"] ?>"><?= $edit ?></button>
+    <button type="submit" name="idMessage" formaction="/?controllers=<?= $edit ?>_form" value="<?= $result["id_message"] ?>"><?= $edit ?></button>
 </form>

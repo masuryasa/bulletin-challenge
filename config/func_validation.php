@@ -1,5 +1,7 @@
 <?php
 
+use function PHPSTORM_META\type;
+
 function title_length_validation($title)
 {
     $titleLen = strlen($title);
@@ -22,8 +24,8 @@ function body_length_validation($body)
 
 function pass_length_validation($pass)
 {
-    if (strlen($pass) == 4) {
-        return $pass;
+    if ((bool)preg_match("/\d{4}/", $pass)) {
+        return true;
     }
 }
 
