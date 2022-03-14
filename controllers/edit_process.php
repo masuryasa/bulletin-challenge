@@ -1,7 +1,4 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/func_validation.php";
-require_once MODELPATH . "Bulletin.php";
 
 $bulletin = new Bulletin();
 
