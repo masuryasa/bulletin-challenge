@@ -1,7 +1,15 @@
 <?php
+session_start();
 
 $bulletin = new Bulletin();
+$action = DLT;
 
-if ($bulletin->deleteMessage($_REQUEST["idMessage"])) {
-	header("Location:" . $_REQUEST["currentPage"]);
-}
+require_once VIEWPATH . "templates/header.php";
+
+if ($bulletin->deleteMessage($_SESSION['idMessage'])) :
+	require_once VIEWPATH . "alert_success.php";
+else :
+	require_once VIEWPATH . "alert_failed.php";
+endif;
+
+require_once VIEWPATH . "templates/footer.php";

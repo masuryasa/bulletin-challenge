@@ -13,6 +13,10 @@ body {
     border-radius: 9px;
 }
 
+.remove-bg {
+    background-color: white;
+}
+
 .form_input {
     margin: auto;
 }
@@ -39,7 +43,12 @@ body {
 }
 
 p#title_text {
+    overflow-wrap: break-word;
     font-weight: bolder;
+}
+
+p#body_text {
+    overflow-wrap: break-word;
 }
 
 .confirmation {

@@ -40,3 +40,11 @@
 - Tag php pada HTML biarkan per baris, meski digunakan oleh 2 baris kode php :heavy_check_mark:
 - Pindahkan kondisional pada edit_form.php dan delete_form.php ke baris atas, hanya require form saja yang dimasukkan dalam tag HTML :heavy_check_mark:
 - `;` pada penutup kondisional dihapus :heavy_check_mark:
+
+## Revisi IV
+
+- Migrasi Xampp (localhost) ke Laragon (virtualhost/pretty url)
+- Proses insert/edit/delete blank output / tidak ditentukan kondisionalnya
+- Tampilan overlap, buat line break jika panjangnya melebihi parent
+- Tombol back pada halaman password not match
+- Gunakan session alih-alih mengirim id dengan form

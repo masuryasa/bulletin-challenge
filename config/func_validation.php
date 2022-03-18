@@ -1,7 +1,5 @@
 <?php
 
-use function PHPSTORM_META\type;
-
 function title_length_validation($title)
 {
     $titleLen = strlen($title);
@@ -15,7 +13,7 @@ function title_length_validation($title)
 function body_length_validation($body)
 {
     $bodyLen = strlen($body);
-    if (!empty($bodyLen) && $bodyLen >= 10 && $bodyLen <= 100) {
+    if (!empty($bodyLen) && $bodyLen >= 10 && $bodyLen <= 200) {
         return true;
     } else {
         return false;

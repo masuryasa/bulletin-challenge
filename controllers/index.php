@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (isset($_SESSION['idMessage'])) :
+    session_unset();
+    session_destroy();
+endif;
+
 $indexPage = true;
 
 $bulletin = new Bulletin();
@@ -15,8 +22,8 @@ $urlPage    = isset($_GET['page']) ? (($_GET['page'] < 1) || ($_GET['page'] > $n
 $start      = ($urlPage > 1) ? ($urlPage * $limit) - $limit : 0;
 $arrResults = $bulletin->selectMessage(null, null, $start, $limit);
 
-if ($numPages > 5) {
-    $neighborPageNum = array();
+$neighborPageNum = array();
+if ($numPages > 5) :
 
     for ($i = 1; $i <= $numPages; $i++) {
 
@@ -34,7 +41,7 @@ if ($numPages > 5) {
                 array_pop($neighborPageNum);
         }
     }
-}
+endif;
 ?>
 
 <?php require_once VIEWPATH . "templates/header.php"  ?>
@@ -46,7 +53,7 @@ if ($numPages > 5) {
         <hr style="margin: 30px 0;">
         <div class="data_messages">
             <p id="title_text"><?= $result['title'] ?></p>
-            <p><?= $result['body'] ?></p>
+            <p id="body_text"><?= $result['body'] ?></p>
             <p><?= $result['time'] ?></p>
             <form method="POST">
                 <label for="password">Pass</label>

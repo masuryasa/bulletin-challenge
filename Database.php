@@ -35,8 +35,6 @@ class Database
 
         $sql .= " VALUES ('0', '$title', '$body', '$password', now())";
 
-        var_dump($sql);
-
         return $mysqli->query($sql);
     }
 

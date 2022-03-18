@@ -1,12 +1,15 @@
 <?php
+session_start();
 
 $bulletin = new Bulletin();
 
+if (!isset($_SESSION['idMessage'])) {
+	$_SESSION['idMessage'] = $_REQUEST['idMessage'];
+}
 $password  = $_REQUEST['passwd'];
-$idMessage = $_REQUEST['idMessage'];
 $previous  = $_REQUEST['currentPage'];
 
-$result = $bulletin->selectMessage($idMessage);
+$result = $bulletin->selectMessage($_SESSION['idMessage']);
 
 $edit = false;
 
