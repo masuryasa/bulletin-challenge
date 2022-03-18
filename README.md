@@ -43,8 +43,8 @@
 
 ## Revisi IV
 
-- Migrasi Xampp (localhost) ke Laragon (virtualhost/pretty url)
-- Proses insert/edit/delete blank output / tidak ditentukan kondisionalnya
-- Tampilan overlap, buat line break jika panjangnya melebihi parent
-- Tombol back pada halaman password not match
-- Gunakan session alih-alih mengirim id dengan form
+- Migrasi Xampp (localhost) ke Laragon (virtualhost/pretty url) :heavy_check_mark:
+- Proses insert/edit/delete blank output / tidak ditentukan kondisionalnya :heavy_check_mark:
+- Tampilan overlap, buat line break jika panjangnya melebihi parent :heavy_check_mark:
+- Tombol back pada halaman password not match :heavy_check_mark:
+- Gunakan session alih-alih mengirim id dengan form :heavy_check_mark:
